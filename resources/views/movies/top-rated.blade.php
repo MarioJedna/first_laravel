@@ -11,11 +11,20 @@
 <body>
     <h1>Top 50 Movies</h1>
     <div class="topMovies">
-        <?php
-        foreach ($top_movies as $top_movie) {
-            echo "<div class='topMovie'>{$top_movie->name} {$top_movie->rating}</div>";
-        }
-        ?>
+        <?php foreach ($top_movies as $top_movie) : ?>
+            <?= "<div class='topMovie'>{$top_movie->name} {$top_movie->rating}</div>" ?>
+            <ul>
+                <li>Genres:</li>
+                <ul>
+                    <?php foreach ($top_movie->genres as $genre) : ?>
+                        <li>
+                            <?= $genre->name ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </ul>
+        <?php endforeach; ?>
+
     </div>
 </body>
 

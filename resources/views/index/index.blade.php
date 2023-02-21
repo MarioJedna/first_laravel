@@ -28,6 +28,7 @@
 
                         <?php endforeach; ?>
                     </ul>
+
                 </ul>
             <?php endforeach; ?>
         </ul>

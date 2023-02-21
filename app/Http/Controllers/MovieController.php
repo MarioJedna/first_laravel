@@ -23,7 +23,8 @@ class MovieController extends Controller
     public function topRated()
     {
 
-        $top_movies = DB::select("SELECT * from `movies` WHERE `movies`.`movie_type_id` != 7 order by `rating` desc limit 50");
+        // $top_movies = DB::select("SELECT * from `movies` WHERE `movies`.`movie_type_id` != 7 order by `rating` desc limit 50");
+        $top_movies = Movie::query()->where('movie_type_id', '!=', 7)->orderBy('rating', 'desc')->limit(50)->get();
         // dd($top_movies);
 
         return view('movies.top-rated', compact('top_movies'));
@@ -36,6 +37,10 @@ class MovieController extends Controller
         $movie = Movie::findOrFail(111161);
 
         $positions = DB::select("SELECT `positions`.`name` as Position, `people`.`fullname` FROM `movie_person` left join `positions` on `positions`.`id` = `movie_person`.`position_id` left join `people` on `people`.`id` = `movie_person`.`person_id` where `movie_person`.`movie_id` = 111161");
+
+        // $positions = Movie::query()
+
+        // dd($positions);
 
         return view('movies.detail', compact('positions', 'movie'));
     }

@@ -18,4 +18,14 @@ class Movie extends Model
     {
         return $this->belongsToMany(Genre::class);
     }
+
+    public function people()
+    {
+        return $this->belongsToMany(Movie::class);
+    }
+
+    public function languages()
+    {
+        return $this->belongsToMany(Language::class);
+    }
 }
