@@ -28,7 +28,14 @@
                             </li>
                         @endforeach;
                     </ul>
-
+                    <li>Languages:</li>
+                    <ul>
+                        @foreach ($movie->languages as $language)
+                            <li>
+                                <?= $language->name ?>
+                            </li>
+                        @endforeach;
+                    </ul>
                 </ul>
             @endforeach;
         </ul>

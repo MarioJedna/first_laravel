@@ -17,7 +17,7 @@ class IndexController extends Controller
             ->where('votes_nr', '>', 5000)
             ->where('movie_type_id', 1)
             ->orderBy('rating', 'desc')
-            ->limit(30)
+            ->limit(5)
             ->get();
 
         // dd($movies);

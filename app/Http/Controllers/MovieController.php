@@ -13,7 +13,7 @@ class MovieController extends Controller
     {
         $builder = Movie::query()
             ->orderBy('name')
-            ->limit(20)
+            ->limit(10)
             ->where('name', 'like', '%mar%');
 
         $movies = $builder->get();
@@ -43,5 +43,18 @@ class MovieController extends Controller
         // dd($positions);
 
         return view('movies.detail', compact('positions', 'movie'));
+    }
+
+    public function search()
+    {
+        $search = $_GET['search'];
+        $filteredMovies = Movie::query()->where('name', 'like', '%' . $search . '%')->get();
+        return view('movies.search', compact('filteredMovies'));
+    }
+
+    public function detail()
+    {
+        $selectedMovie = Movie::query()->where('id', '=', $_GET['id'])->get();
+        return view('movies.detail2', compact('selectedMovie'));
     }
 }

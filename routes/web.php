@@ -5,6 +5,7 @@ use App\Http\Controllers\AwardController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\VideogameController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +46,15 @@ Route::get('/people', [PersonController::class, 'index']);
 
 // route to about us page
 Route::get('/about-us', [AboutController::class, 'aboutUs']);
+
+// route to search page
+Route::get('/search', [MovieController::class, 'search']);
+
+// route to person detail page
+Route::get('/person-search', [PersonController::class, 'detail']);
+
+// route to movie detail page
+Route::get('/movie-search', [MovieController::class, 'detail']);
+
+// reviewing a movie
+Route::post('/movies/rate', [ReviewController::class, 'store']);

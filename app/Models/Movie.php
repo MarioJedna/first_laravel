@@ -21,11 +21,16 @@ class Movie extends Model
 
     public function people()
     {
-        return $this->belongsToMany(Movie::class);
+        return $this->belongsToMany(Person::class);
     }
 
     public function languages()
     {
         return $this->belongsToMany(Language::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }
