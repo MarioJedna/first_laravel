@@ -12,25 +12,25 @@
     <h1 style="color: blue;">Index Page for My First Laravel Project</h1>
     <div class="movies">
         <ul>
-            <?php foreach ($movies as $movie) : ?>
-
-                <?= $movie->name ?>
+            @foreach ($movies as $movie)
+                {{ $movie->name }}
                 <ul>
-                    <li><?= ($movie->year) ?></li>
-                    <li> <?= $movie->movieType->name ?></li>
+                    <li>{!! $movie->year !!}</li>
+                    <li>{{ $movie->movieType->name }}</li>
+
+                    {{-- comments with Blade --}}
 
                     <li>Genres:</li>
                     <ul>
-                        <?php foreach ($movie->genres as $genre) : ?>
+                        @foreach ($movie->genres as $genre)
                             <li>
                                 <?= $genre->name ?>
                             </li>
-
-                        <?php endforeach; ?>
+                        @endforeach;
                     </ul>
 
                 </ul>
-            <?php endforeach; ?>
+            @endforeach;
         </ul>
     </div>
 </body>
