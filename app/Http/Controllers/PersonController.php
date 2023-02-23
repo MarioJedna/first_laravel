@@ -25,4 +25,21 @@ class PersonController extends Controller
         // dd($selectedPerson[0]->fullname);
         return view('person.detail', compact('selectedPerson'));
     }
+
+    public function create(Request $request)
+    {
+        $param1 = $request->input('param1', 'default value');
+        // dd($param1);
+    }
+
+    public function insert()
+    {
+        $person = new Person;
+        $person->fullname = $_POST['fullname'];
+        $person->save();
+
+        session()->flash('sucess_message', 'Person successfully inserted');
+
+        return redirect()->route('people.index');
+    }
 }

@@ -9,6 +9,8 @@ class Movie extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function movieType()
     {
         return $this->belongsTo(MovieType::class);

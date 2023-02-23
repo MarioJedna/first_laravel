@@ -38,11 +38,16 @@ Route::get('/top-rated-games', [VideogameController::class, 'topRated']);
 Route::get('/movies/shawshank-redemption', [MovieController::class, 'shawshank']);
 
 // route to index movies
-Route::get('/movies', [MovieController::class, 'index']);
+Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
 
 
 // route to people index
 Route::get('/people', [PersonController::class, 'index']);
+
+// route to people create
+Route::get('/people/create', [PersonController::class, 'create'])->name('people.create');
+Route::post('/people', [PersonController::class, 'insert'])->name('people.insert');
+
 
 // route to about us page
 Route::get('/about-us', [AboutController::class, 'aboutUs']);
@@ -54,7 +59,17 @@ Route::get('/search', [MovieController::class, 'search']);
 Route::get('/person-search', [PersonController::class, 'detail']);
 
 // route to movie detail page
-Route::get('/movie-search', [MovieController::class, 'detail']);
+Route::get('/movie-search', [MovieController::class, 'detail'])->name('movies.detail');
 
 // reviewing a movie
 Route::post('/movies/rate', [ReviewController::class, 'store']);
+
+// get and post for creating new movie
+Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create');
+Route::post('/movies', [MovieController::class, 'insert'])->name('movies.insert');
+
+// get and post for adjusting movies
+Route::get('/movies/{movieId}/edit', [MovieController::class, 'edit'])->name('movies.edit');
+Route::put('/movies/update/{movieId}', [MovieController::class, 'update'])->name('movies.update');
+
+Route::delete('/movies/delete/{movieId}', [MovieController::class, 'delete'])->name('movies.delete');

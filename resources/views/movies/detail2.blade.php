@@ -6,11 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $selectedMovie[0]->name }}</title>
+    <link rel="stylesheet" href="/style.css">
+
 </head>
 
 <body>
-    <h1>{{ $selectedMovie[0]->name }} ({{ $selectedMovie[0]->year }}) <?= $selectedMovie[0]->id ?></h1>
 
+    @include('common.messages')
+
+    <a href="{{ route('movies.create') }}">Would you like to enter new movie?</a>
+
+    <h1>{{ $selectedMovie[0]->name }} ({{ $selectedMovie[0]->year }})</h1>
+    <h4 style="color:grey">id: {{ $selectedMovie[0]->id }}</h4>
     <form action="/movies/rate" method="post">
         @csrf
 
